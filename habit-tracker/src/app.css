@@ -1,7 +1,67 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+h1 {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
 button {
+  margin: 0;
   outline: none;
   border: 0;
   cursor: pointer;
+}
+
+.navbar {
+  display: flex;
+  padding: 24px 12px;
+  font-size: xx-large;
+  background-color: rgb(251, 236, 208);
+}
+
+.navbar > svg {
+  color: green;
+}
+
+.navbar-title {
+  padding: 0px 12px;
+}
+
+.navbar-habits-count {
+  background-color: green;
+  color: white;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.add-form {
+  margin: 16px 12px;
+}
+
+.add-input {
+  margin-right: 12px;
+  width: 400px;
+  height: 30px;
+  font-size: x-large;
+}
+
+.add-button {
+  background-color: green;
+  color: white;
+  font-size: larger;
+  padding: 8px 12px;
 }
 
 .habit {
@@ -41,4 +101,11 @@ button {
 
 .habit-delete {
   color: darkred;
+}
+
+.habits-reset {
+  background-color: green;
+  color: white;
+  font-size: x-large;
+  padding: 4px 12px;
 }

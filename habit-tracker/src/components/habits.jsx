@@ -1,52 +1,49 @@
-import React, { Component } from 'react';
-import Habit from './habit';
+import React, { Component } from "react";
+import Habit from "./habit";
+import Input from "./input";
 
 class Habits extends Component {
-    state = {
-        habits : [
-            {id: 0, name: 'Reading', count: 0},
-            {id: 1, name: 'Running', count: 0},
-            {id: 2, name: 'Coding', count: 0}
-        ]
-    };
+  handleIncrement = (habit) => {
+    this.props.onIncrement(habit);
+  };
 
-    handleIncrement = (habit) => {
-        const habits = [...this.state.habits];
-        const index = habits.indexOf(habit);
-        habits[index].count += 1;
-        this.setState({habits});
-    };
+  handleDecrement = (habit) => {
+    this.props.onDecrement(habit);
+  };
 
-    handleDecrement = (habit) => {
-        const habits = [...this.state.habits];
-        const index = habits.indexOf(habit);
-        const count = habits[index].count - 1;
-        habits[index].count = count < 0 ? 0 : count;
-        this.setState({habits});
-    };
+  handleDelete = (habit) => {
+    this.props.onDelete(habit);
+  };
 
-    handleDelete = (habit) => {
-        const habits = [...this.state.habits];
-        const index = habits.indexOf(habit);
-        habits.splice(index, 1);
-        this.setState({habits});
-    };
+  handleAdd = (habit) => {
+    this.props.onAdd(habit);
+  };
 
-    render() {
-        return (
-            <ul>
-                {this.state.habits.map(habit => (
-                    <Habit 
-                    key={habit.id} 
-                    habit={habit} 
-                    onIncrement={this.handleIncrement}
-                    onDecrement={this.handleDecrement}
-                    onDelete={this.handleDelete}
-                    />
-                ))}
-            </ul>
-        );
-    }
+  handleReset = () => {
+    this.props.onReset();
+  };
+
+  render() {
+    return (
+      <>
+        <Input onAdd={this.handleAdd} />
+        <ul>
+          {this.props.habits.map((habit) => (
+            <Habit
+              key={habit.id}
+              habit={habit}
+              onIncrement={this.handleIncrement}
+              onDecrement={this.handleDecrement}
+              onDelete={this.handleDelete}
+            />
+          ))}
+        </ul>
+        <button className="habits-reset" onClick={this.handleReset}>
+          Reset All
+        </button>
+      </>
+    );
+  }
 }
 
 export default Habits;
